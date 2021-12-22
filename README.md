@@ -116,7 +116,7 @@ The third objective is to practice our usage of **Docker**. All the components o
 * You prove that the **load balancer** can distribute HTTP requests between these nodes.
 * You have **documented** your configuration and your validation procedure in your report.
 
-### Load balancing: round-robin vs sticky sessions (0.5 pt)
+### Load balancing: round-robin vs sticky sessions (0.5 pt) (USE Traefik + docker-compose)
 
 * You do a setup to demonstrate the notion of sticky session.
 * You prove that your load balancer can distribute HTTP requests in a round-robin fashion to the dynamic server nodes (because there is no state).
@@ -130,7 +130,7 @@ The third objective is to practice our usage of **Docker**. All the components o
 * You describe your approach (are you implementing a discovery protocol based on UDP multicast? are you using a tool such as serf?)
 * You have documented your configuration and your validation procedure in your report.
 
-### Management UI (0.5 pt)
+### Management UI (0.5 pt) (USE Portainer)
 
 * You develop a web app (e.g. with express.js) that administrators can use to monitor and update your web infrastructure.
 * You find a way to control your Docker environment (list containers, start/stop containers, etc.) from the web app. For instance, you use the Dockerode npm module (or another Docker client library, in any of the supported languages).
