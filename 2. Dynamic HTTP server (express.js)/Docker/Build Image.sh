@@ -7,4 +7,4 @@
 # cp "C:\Users\Ivan Vecerina\Projects\MockMock\target\MockMock-1.4.0.one-jar.jar" .
 
 # Build the Docker image locally
-docker build --tag http_infra/express_passwordgen .
+docker build --tag http_infra/dynamic_http .
