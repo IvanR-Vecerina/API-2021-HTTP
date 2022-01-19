@@ -1,0 +1,45 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  web:
+    build: ../1. Static HTTP server (apache httpd) + 4. JQuery/Docker/
+    hostname: apache-static
+    expose: 
+       - "80"
+    labels:
+       - "traefik.http.routers.web.rule=PathPrefix(`/`)"
+       - "traefik.http.services.web-static-service.loadBalancer.sticky.cookie=true"
+       - "traefik.http.services.web-static-service.loadBalancer.sticky.cookie.name=web_static_cookie_name"
+
+  dynamic:
+    build: ../2. Dynamic HTTP server (express.js)/Docker/
+    hostname: express-dynamic
+    expose:
+      - "3000"
+    labels:
+      - "traefik.http.routers.dynamic.rule=PathPrefix(`/api/pwdgen`)"
+      - "traefik.http.middlewares.express-dynamic.stripprefix.prefixes=/api/pwdgen/"
+      - "traefik.http.routers.dynamic.middlewares=express-dynamic"
+
+  reverse-proxy:
+    image: traefik:v2.5
+    hostname: dynamic-rp
+    command: --api.insecure=true --providers.docker --accesslog=true
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: "portainer"
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  portainer_data:

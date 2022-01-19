@@ -1,0 +1,1 @@
+docker compose -p http-infra up # --scale web=5
