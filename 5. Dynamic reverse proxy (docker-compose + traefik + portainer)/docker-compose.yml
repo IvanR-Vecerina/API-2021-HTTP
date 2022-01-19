@@ -10,15 +10,15 @@ services:
        - "traefik.http.services.web-static-service.loadBalancer.sticky.cookie=true"
        - "traefik.http.services.web-static-service.loadBalancer.sticky.cookie.name=web_static_cookie_name"
 
-  dynamic:
+  express:
     build: ../2. Dynamic HTTP server (express.js)/Docker/
     hostname: express-dynamic
     expose:
       - "3000"
     labels:
-      - "traefik.http.routers.dynamic.rule=PathPrefix(`/api/pwdgen`)"
+      - "traefik.http.routers.express.rule=PathPrefix(`/api/pwdgen`)"
       - "traefik.http.middlewares.express-dynamic.stripprefix.prefixes=/api/pwdgen/"
-      - "traefik.http.routers.dynamic.middlewares=express-dynamic"
+      - "traefik.http.routers.express.middlewares=express-dynamic"
 
   reverse-proxy:
     image: traefik:v2.5
