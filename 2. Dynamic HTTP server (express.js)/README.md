@@ -23,4 +23,4 @@ Uses packages are:
 
 ## Disclaimer 
 
-When freshly downloading the repo, make sure to run `npm install` command in the folder containing package.json file if you don't have the `node_module`folder.
+When freshly downloading the repo, make sure to run `npm install` command in the folder (should be `src`) containing `package.json` file if you don't have the `node_module` folder.
