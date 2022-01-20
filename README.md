@@ -1,5 +1,12 @@
 # API-2021-HTTP
 # Labo HTTP Infra
+## Préface and repository structure
+
+Folders have been made for each step, except for "step 4" being included with "step 1" and the bonuses being included in the "step 5".
+
+Each Step folder contains the sources needed for it along with a few bash scripts that execute the basic commands needed to get the step's content up and running.
+
+---
 
 ## Objectives
 
