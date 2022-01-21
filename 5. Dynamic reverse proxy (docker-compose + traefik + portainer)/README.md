@@ -38,10 +38,14 @@ traefik already handles that for us. Thank you treafik!
 
 ## Bonus: Load balancing (round robin vs sticky sessions)
 traefik is set up in roundrobin mode by default, so that's express service handled. 
-However for the web service, we need to add a laber specifying that we want cookies enabled for it and another one to name said cookie (I used the generic name "web_static_cookie_name").
+
+However for the web service, we need to add a label specifying that we want cookies enabled for it and another one to name said cookie (I used the generic name "web_static_cookie_name").
+
 We now have sticky session for web service and round robin for the express service.
 
 ## Bonus: Dynamic cluster management + Management UI
 For these last to bonuses we shall use Portainer. 
+
 That requires us to add the Portainer service to our docker compose and map a port to access the interface (see `docker-compose.yml` file for details).
+
 We can now manage our cluster through the Portainer interface. When adding/deleting serice instances we can see in the traefik logs that the load-balancing updates itself and make the respectively added/deleted ressources available/unavailable.
